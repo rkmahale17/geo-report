@@ -2,6 +2,11 @@
 
 > A Vue.js project
 
+This project is taking geojson data from JOSN BIN IO with data of pincode wise and locality wise json.
+You can change the http requets to your local data.
+
+
+
 ## Build Setup
 
 ``` bash
