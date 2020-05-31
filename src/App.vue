@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-       <Toolbar />
-    <router-view/>
+    <Toolbar />
+    <router-view />
   </div>
 </template>
 
@@ -15,20 +15,19 @@ export default {
   },
 
   created: function () {
-    API_SEVICES.getLocality().then((result) => {
+    API_SEVICES.getLocality().then(result => {
       this.$store.dispatch('addLocalities', result.data)
     })
-    API_SEVICES.getIncome().then((result) => {
+    API_SEVICES.getIncome().then(result => {
       this.$store.dispatch('addIncome', result.data)
     })
-    API_SEVICES.getPinocde().then((result) => {
+    API_SEVICES.getPinocde().then(result => {
       this.$store.dispatch('addPincode', result.data)
     })
-    API_SEVICES.getExpenditure().then((result) => {
+    API_SEVICES.getExpenditure().then(result => {
       this.$store.dispatch('addExpenditure', result.data)
     })
   }
-
 }
 </script>
 

@@ -6,7 +6,7 @@
     :zoom="zoom"
     @load="onMapLoad"
   >
-    <MglNavigationControl position="top-right" />
+    <MglNavigationControl position="bottom-right" />
 
     <MglMarker :coordinates="coordinates" color="green" />
   </MglMap>
@@ -70,26 +70,21 @@ export default {
     return {
       coordinates: [77.488113, 13.002949],
       accessToken:
-        'pk.eyJ1IjoicmttYWhhbGUiLCJhIjoiY2thcnhsM3Z0MDV5eTJ6bDJvNXh1ODh3cCJ9.0jjrPwlkosI00FYSNE96VQ', // your access token. Needed if you using Mapbox maps
-      mapStyle: 'mapbox://styles/mapbox/streets-v11', // your map style
+        'pk.eyJ1IjoicmttYWhhbGUiLCJhIjoiY2thcnhsM3Z0MDV5eTJ6bDJvNXh1ODh3cCJ9.0jjrPwlkosI00FYSNE96VQ',
+      mapStyle: 'mapbox://styles/mapbox/streets-v11',
       zoom: 9
     }
   },
-  // fill #C7D8F0
-  //
+
   created () {
-    // We need to set mapbox-gl library here in order to use it in template
     this.mapbox = Mapbox
   },
   methods: {
     updateCharts (e) {
-      console.log(this.income)
       let locality = this.income.find(
         element => e.locality === element.locality
       )
       this.$emit('updateLocality', locality, e)
-      console.log(this.expenditure)
-      console.log(e)
     },
 
     onMapLoad ({ map }) {
@@ -101,14 +96,14 @@ export default {
             `<div class="pop-up_box">
       <section class="pop_scroll">
         <header class="d-flex">
-          <div>Locality</div>
-          <div>Population</div>
-          <div>Households</div>
+          <div class="t-overflow">Locality</div>
+          <div class="t-overflow">Population</div>
+          <div class="t-overflow">Households</div>
         </header>
         <main class="d-flex">
-          <div>${e.features[0].properties.locality}</div>
-          <div>${e.features[0].properties.population}</div>
-          <div>${e.features[0].properties.households}</div>
+          <div class="t-overflow">${e.features[0].properties.locality}</div>
+          <div class="t-overflow">${e.features[0].properties.population}</div>
+          <div class="t-overflow">${e.features[0].properties.households}</div>
         </main>
       </section>
     </div>`
@@ -116,12 +111,10 @@ export default {
           .addTo(map)
       })
 
-      // Change the cursor to a pointer when the mouse is over the states layer.
       map.on('mouseenter', 'states-layer', function () {
         map.getCanvas().style.cursor = 'pointer'
       })
 
-      // Change it back to a pointer when it leaves.
       map.on('mouseleave', 'states-layer', function () {
         map.getCanvas().style.cursor = ''
       })

@@ -1,18 +1,15 @@
 
 <template>
   <div class="small">
-        <p class="heading-3 f-w text-center tc-w">Monthly Expenditure</p>
+    <p class="heading-3 f-w text-center tc-w">Monthly Expenditure</p>
     <div v-if="getExpenditure">
       <BarChart :chart-data="getExpenditure" :options="options"></BarChart>
     </div>
     <div v-else>
-      <img src="../assets/empty.svg" class="empty_image" alt="emptyImage">
-      <div class="heading-4 f-wr text-center">
-      <h3  class="mb-n-10">No Data Available</h3>
-      <h4>
-       Expenditure
-      </h4>
-
+      <img src="../assets/empty.svg" class="empty_image" alt="emptyImage" />
+      <div class="heading-4 f-wr tc-w text-center">
+        <h3 class="mb-n-10">No Data Available</h3>
+        <h4>Expenditure</h4>
       </div>
     </div>
   </div>
@@ -36,27 +33,31 @@ export default {
             }
           },
           scales: {
-            xAxes: [{
-              gridLines: {
-                display: false
-              },
-              ticks: {
-                fontColor: 'white' // this here
-              },
-              scaleLabel: {
-                display: true,
-                labelString: `Expenditure for people with pin ${this.pincodeWiseLocality.pincode}`,
-                fontColor: 'white' // this here
+            xAxes: [
+              {
+                gridLines: {
+                  display: false
+                },
+                ticks: {
+                  fontColor: 'white' // this here
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: `Expenditure for people with pin ${this.pincodeWiseLocality.pincode}`,
+                  fontColor: 'white' // this here
+                }
               }
-            }],
-            yAxes: [{
-              gridLines: {
-                display: true
-              },
-              ticks: {
-                fontColor: 'white'
+            ],
+            yAxes: [
+              {
+                gridLines: {
+                  display: true
+                },
+                ticks: {
+                  fontColor: 'white'
+                }
               }
-            }]
+            ]
           }
         }
         return optionData
@@ -107,6 +108,6 @@ export default {
 <style>
 .small {
   max-width: 600px;
-  margin:  auto;
+  margin: auto;
 }
 </style>

@@ -4,8 +4,9 @@
     :mapStyle.sync="mapStyle"
     :center="coordinates"
     :zoom="zoom"
-    @load="onMapLoad" >
-    <MglNavigationControl position="top-right" />
+    @load="onMapLoad"
+  >
+    <MglNavigationControl position="bottom-right" />
     <MglMarker :coordinates="coordinates" color="green" />
   </MglMap>
 </template>
@@ -52,15 +53,13 @@ export default {
     return {
       coordinates: [77.488113, 13.002949],
       accessToken:
-        'pk.eyJ1IjoicmttYWhhbGUiLCJhIjoiY2thcnhsM3Z0MDV5eTJ6bDJvNXh1ODh3cCJ9.0jjrPwlkosI00FYSNE96VQ', // your access token. Needed if you using Mapbox maps
-      mapStyle: 'mapbox://styles/mapbox/streets-v11', // your map style
+        'pk.eyJ1IjoicmttYWhhbGUiLCJhIjoiY2thcnhsM3Z0MDV5eTJ6bDJvNXh1ODh3cCJ9.0jjrPwlkosI00FYSNE96VQ',
+      mapStyle: 'mapbox://styles/mapbox/streets-v11',
       zoom: 9
     }
   },
-  // fill #C7D8F0
-  //
+
   created () {
-    // We need to set mapbox-gl library here in order to use it in template
     this.mapbox = Mapbox
   },
   methods: {
@@ -80,14 +79,14 @@ export default {
             `<div class="pop-up_box">
       <section class="pop_scroll">
         <header class="d-flex">
-          <div>Pincode</div>
-          <div>Population</div>
-          <div>Households</div>
+          <div class="t-overflow">Pincode</div>
+          <div class="t-overflow">Population</div>
+          <div class="t-overflow">Households</div>
         </header>
         <main class="d-flex">
-          <div>${e.features[0].properties.pincode}</div>
-          <div>${e.features[0].properties.population}</div>
-          <div>${e.features[0].properties.households}</div>
+          <div class="t-overflow">${e.features[0].properties.pincode}</div>
+          <div class="t-overflow">${e.features[0].properties.population}</div>
+          <div class="t-overflow">${e.features[0].properties.households}</div>
         </main>
       </section>
     </div>`

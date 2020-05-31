@@ -9,11 +9,12 @@
         <LocalityWiseMap class="div-box-shadow" @updateLocality="updateLocality"></LocalityWiseMap>
       </div>
     </div>
-    <div class="charts">
+    <div class="charts b2 bc-p div-box-shadow">
       <section class="area_info div-box-shadow br-10">
-        <div class="heading-3 tc-w f-wb letter-space-1 mainHeadings">AREA INFO</div>
-        <div class="d-flex xs-block justify-content-center mt-20">
-          <div class="pt-10 mt-10 info-block text-center" v-if="(pincode || localityId)">
+        <div class="d-flex xs-block justify-content-space-between mt-10">
+          <div class="heading-3 tc-w f-wb letter-space-1 mainHeadings">AREA INFO</div>
+
+          <div class="pt-10 mt-10 info-block text-center mt-20" v-if="(pincode || localityId)">
             <div v-if="pincode" class="heading-4 tc-gl">
               Showing Result for Pincode
               <span class="tc-w heading-3">{{ pincode }}</span>
@@ -23,6 +24,8 @@
               <span class="tc-w heading-3">{{ localityId }}</span>
             </div>
           </div>
+        </div>
+        <div class="d-flex xs-block justify-content-center mt-20">
           <div class="ml-5 info-block text-center">
             <div>
               <input type="checkbox" class="toggle-switch switch-on-off" v-model="isLocality" />
@@ -87,7 +90,7 @@
           </div>
         </div>
       </section>
-      <section class="b2 bc-p demographic_box br-10 p-10 div-box-shadow mb-10">
+      <section class="demographic_box p-10 mb-10">
         <div class="heading-3 tc-p f-wb letter-space-1 mainHeadings">DEMOGRAPHICS</div>
 
         <div class="d-flex b-l justify-content-center dSmBlock">
@@ -216,10 +219,10 @@ export default {
   margin: 10px auto;
 }
 .doughnutChart {
-  background: linear-gradient(90deg, #00c9ff 0%, #92fe9d 100%);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
 }
 .bar_chart {
-  background: linear-gradient(90deg, #fc466b 0%, #3f5efb 100%);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
 }
 .charts {
   position: absolute !important;
@@ -265,7 +268,7 @@ export default {
 .toggle-switch {
   height: 40px;
   width: 150px;
-  border: 1px solid black;
+  border: 1px solid white;
   display: inline-block;
   overflow: hidden;
   position: relative;

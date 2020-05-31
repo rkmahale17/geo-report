@@ -3,21 +3,23 @@
   <div class="small">
     <p class="heading-3 f-w text-center tc-w">Monthly Income Distrubution</p>
     <div v-if="getData">
-      <DoughnutCharts :chart-data="getData"></DoughnutCharts>
-      <h3 class="text-center f-wr">
-       <span class="tc-gl" >Income of </span>  {{localityData.locality}} :
-        <span class="tc-p f-wm"> {{ localityData.income }}<span class="tc-b f-wr headin"> Rs.</span>  </span>
+      <DoughnutCharts :chart-data="getData" :options="options"></DoughnutCharts>
+      <h3 class="text-center tc-w f-wr">
+        <span class=" f-wr tc-l">Income of</span>
+        {{localityData.locality}}
+        <span class="tc-l">  area</span>
+        <span class=" f-wm">
+          {{ localityData.income }}
+          <span class="f-wr tc-l headin">Rs.</span>
+        </span>
       </h3>
     </div>
     <div v-else>
-            <img src="../assets/empty.svg" class="empty_image" alt="emptyImage">
+      <img src="../assets/empty.svg" class="empty_image" alt="emptyImage" />
 
-      <div class="heading-4 f-wr  text-center">
-      <h3 class="mb-n-10">No Data Available</h3>
-      <h4>
-       Monthly Income Distrubution
-      </h4>
-
+      <div class="heading-4 f-wr tc-w text-center">
+        <h3 class="mb-n-10">No Data Available</h3>
+        <h4>Monthly Income Distrubution</h4>
       </div>
     </div>
   </div>
@@ -53,12 +55,15 @@ export default {
     }
   },
   data () {
-    return {}
-  },
-  mounted () {},
-  methods: {
-    getRandomInt () {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    return {
+      options: {
+        legend: {
+          labels: {
+            fontColor: 'white',
+            fontSize: 16
+          }
+        }
+      }
     }
   }
 }

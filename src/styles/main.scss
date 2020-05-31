@@ -10,14 +10,14 @@ body {
 #app {
 }
 //maps
-.floating-btn{
+.floating-btn {
   position: absolute;
-  right:20px;
+  right: 20px;
 }
-.floating-btn__down{
+.floating-btn__down {
   position: fixed;
-  top:40%;
-  right:5px;
+  top: 40%;
+  right: 5px;
 }
 button.mapboxgl-ctrl-zoom-in > .mapboxgl-ctrl-icon {
   padding: 7px 10px 10px 20px;
@@ -94,8 +94,8 @@ button.mapboxgl-ctrl-compass > .mapboxgl-ctrl-icon {
 .mb-10 {
   margin-bottom: 10px;
 }
-.mt-20{
-  margin-top: 20px;
+.mt-20 {
+  margin-top: 20px !important;
 }
 .material-icons {
   font-family: "Material Icons";
@@ -217,6 +217,11 @@ a:hover {
   padding: 1rem;
 }
 
+//txt class="t-overflow"
+.t-overflow{
+  max-width: 50px;
+    text-overflow: ellipsis
+}
 //text-color
 .tc-p {
   color: #1639f7;
@@ -246,6 +251,9 @@ a:hover {
   color: white;
 }
 
+.tc-l {
+  color: #9e9e9e;
+}
 //border
 
 .b-0 {

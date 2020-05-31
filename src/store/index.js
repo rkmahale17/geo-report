@@ -12,7 +12,6 @@ const store = new Vuex.Store({
   },
   mutations: {
     commitLocalities (state, localities) {
-      console.log(localities)
       state.localities = localities
     },
     commitExpenditure (state, expenditure) {
