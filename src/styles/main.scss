@@ -5,25 +5,51 @@ body {
   height: 100%;
   padding: 0px;
   margin: 0px;
-  font-size: 16px;
   font-family: "Roboto", sans-serif;
 }
-#app{
-
+#app {
 }
 //maps
-
+.floating-btn{
+  position: absolute;
+  bottom: 20px;
+  right:20px;
+}
+.floating-btn__down{
+  position: fixed;
+  top:40%;
+  right:5px;
+}
+button.mapboxgl-ctrl-zoom-in > .mapboxgl-ctrl-icon {
+  padding: 7px 10px 10px 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 29 29' xmlns='http://www.w3.org/2000/svg' fill='%23333'%3E%3Cpath d='M14.5 8.5c-.75 0-1.5.75-1.5 1.5v3h-3c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h3v3c0 .75.75 1.5 1.5 1.5S16 19.75 16 19v-3h3c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-3v-3c0-.75-.75-1.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+button.mapboxgl-ctrl-zoom-out > .mapboxgl-ctrl-icon {
+  padding: 7px 10px 10px 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 29 29' xmlns='http://www.w3.org/2000/svg' fill='%23333'%3E%3Cpath d='M10 13c-.75 0-1.5.75-1.5 1.5S9.25 16 10 16h9c.75 0 1.5-.75 1.5-1.5S19.75 13 19 13h-9z'/%3E%3C/svg%3E");
+}
+button.mapboxgl-ctrl-compass > .mapboxgl-ctrl-icon {
+  padding: 7px 10px 10px 20px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='29' height='29' viewBox='0 0 29 29' xmlns='http://www.w3.org/2000/svg' fill='%23333'%3E%3Cpath d='M10.5 14l4-8 4 8h-8z'/%3E%3Cpath d='M10.5 16l4 8 4-8h-8z' fill='%23ccc'/%3E%3C/svg%3E");
+}
+.empty_image {
+  width: 100%;
+  height: 200px;
+}
+.mb-n-10 {
+  margin-bottom: -10px;
+}
 .mgl-map-wrapper {
-    height: 500px !important;
-    width: 90%;
-    max-width: 1200px;
-    /* margin: auto !important; */
-    /* text-align: center; */
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
+  height: 500px !important;
+  width: 90%;
+  max-width: 1200px;
+  /* margin: auto !important; */
+  /* text-align: center; */
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 //
 .mapboxgl-popup {
@@ -117,7 +143,6 @@ body {
   display: flex;
 }
 .sm-block {
-  display: flex;
 }
 
 .flex-end {
@@ -134,7 +159,9 @@ body {
 /* You can add global styles to this file, and also import other style files */
 
 //variables
-
+.clr-red {
+  color: red;
+}
 //responsive img
 .goal-img {
   width: 100%;
@@ -149,12 +176,10 @@ a:hover {
 .b-p {
   background: $primary;
 }
-.b-primary{
+.b-primary {
   background: rgb(19, 19, 199);
 }
-.b
-
-.b-pl {
+.b .b-pl {
   background: $primary-light;
 }
 
@@ -454,6 +479,9 @@ a {
 .div-shadow {
   box-shadow: $d-shadow;
 }
+.div-box-shadow {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
 .div-box-shadow:hover {
   box-shadow: $d-shadow-h;
 }
@@ -478,9 +506,9 @@ a {
 
 .toolbar {
 }
-  .xs-block{
-    display: flex !important;
-  }
+.xs-block {
+  display: flex !important;
+}
 $theme-color: #37afe5;
 .custom_label {
   font-size: 0.6em;
@@ -506,6 +534,9 @@ $theme-color: #37afe5;
 .br-10 {
   border-radius: 10px;
 }
+.p-10 {
+  padding: 10px;
+}
 
 .custome-btn-1:hover::before {
   width: 200px;
@@ -514,6 +545,10 @@ $theme-color: #37afe5;
   left: 0;
   border-radius: 0;
   opacity: 1;
+}
+.dummy_box {
+  width: 2%;
+  height: 100%;
 }
 .custome-btn-1::before {
   content: "";
@@ -537,13 +572,21 @@ $theme-color: #37afe5;
   .toolbar .desktop {
     display: none !important;
   }
-
 }
+
 @media only screen and (max-width: 600px) {
+  .charts_box {
+    width: 98% !important;
+    padding: 5px;
+    margin: 10px;
+    margin-top: 15px !important;
+    margin: auto;
+    border: 1px solid gray;
+  }
   .toolbar .desktop {
     display: none !important;
   }
-    .xs-block{
+  .xs-block {
     display: block !important;
   }
   .home {
@@ -584,6 +627,7 @@ $theme-color: #37afe5;
   .home__feature_box {
     display: block !important;
   }
+
   .dSmBlock {
     display: block !important;
   }

@@ -1,11 +1,19 @@
 
 <template>
   <div class="small">
+        <p class="heading-3 f-w text-center tc-w">Monthly Expenditure</p>
     <div v-if="getExpenditure">
-      <BarChart :chart-data="getExpenditure"></BarChart>
+      <BarChart :chart-data="getExpenditure" :options="options"></BarChart>
     </div>
     <div v-else>
-      <h3 class="heading-3 f-wm">No Expenditure found</h3>
+      <img src="../assets/empty.svg" class="empty_image" alt="emptyImage">
+      <div class="heading-4 f-wr text-center">
+      <h3  class="mb-n-10">No Data Available</h3>
+      <h4>
+       Expenditure
+      </h4>
+
+      </div>
     </div>
   </div>
 </template>
@@ -19,21 +27,56 @@ export default {
   },
   props: ['pincodeWiseLocality'],
   computed: {
-    getExpenditure () {
-      let expenditure = {
-        labels: [],
-        datasets: [
-          {
-            label: 'Rs',
-            backgroundColor: '#f87979',
-            pointBackgroundColor: 'white',
-            borderWidth: 1,
-            pointBorderColor: '#249EBF',
-            data: []
-          }
-        ]
-      }
+    options () {
       if (this.pincodeWiseLocality && this.pincodeWiseLocality.pincode) {
+        let optionData = {
+          legend: {
+            labels: {
+              fontColor: 'white' // this here
+            }
+          },
+          scales: {
+            xAxes: [{
+              gridLines: {
+                display: false
+              },
+              ticks: {
+                fontColor: 'white' // this here
+              },
+              scaleLabel: {
+                display: true,
+                labelString: `Expenditure for people with pin ${this.pincodeWiseLocality.pincode}`,
+                fontColor: 'white' // this here
+              }
+            }],
+            yAxes: [{
+              gridLines: {
+                display: true
+              },
+              ticks: {
+                fontColor: 'white'
+              }
+            }]
+          }
+        }
+        return optionData
+      }
+    },
+    getExpenditure () {
+      if (this.pincodeWiseLocality && this.pincodeWiseLocality.pincode) {
+        let expenditure = {
+          labels: [],
+          datasets: [
+            {
+              label: `Expenditure Rs.`,
+              backgroundColor: '#73f3b2',
+              pointBackgroundColor: 'white',
+              borderWidth: 2,
+              pointBorderColor: 'white',
+              data: []
+            }
+          ]
+        }
         for (let [key, value] of Object.entries(this.pincodeWiseLocality)) {
           if (key !== 'pincode') {
             expenditure.labels.push(key)
@@ -49,17 +92,7 @@ export default {
   data () {
     return {
       datacollection: null,
-      backgroundColor: [
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979',
-        '#f87979'
-      ]
+      pincode: null
     }
   },
   mounted () {},
@@ -74,6 +107,6 @@ export default {
 <style>
 .small {
   max-width: 600px;
-  margin: 150px auto;
+  margin:  auto;
 }
 </style>

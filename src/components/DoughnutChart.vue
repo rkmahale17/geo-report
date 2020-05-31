@@ -1,19 +1,27 @@
 
 <template>
   <div class="small">
-    <p class="heading-3 f-wb">Monthly Income</p>
+    <p class="heading-3 f-w text-center tc-w">Monthly Income Distrubution</p>
     <div v-if="getData">
       <DoughnutCharts :chart-data="getData"></DoughnutCharts>
-      <h3 class="text-center">
-        {{localityData.locality}} :
-        <span class="tc-p f-wm">{{ localityData.income}}</span>
+      <h3 class="text-center f-wr">
+       <span class="tc-gl" >Income of </span>  {{localityData.locality}} :
+        <span class="tc-p f-wm"> {{ localityData.income }}<span class="tc-b f-wr headin"> Rs.</span>  </span>
       </h3>
     </div>
     <div v-else>
-      <h3 class="text-center heading-3" style="color:red">No Data for Income</h3>
+            <img src="../assets/empty.svg" class="empty_image" alt="emptyImage">
+
+      <div class="heading-4 f-wr  text-center">
+      <h3 class="mb-n-10">No Data Available</h3>
+      <h4>
+       Monthly Income Distrubution
+      </h4>
+
+      </div>
     </div>
   </div>
-</template>p
+</template>
 <script>
 import DoughnutCharts from './DoughnutCharts.js'
 
@@ -59,6 +67,6 @@ export default {
 <style>
 .small {
   max-width: 600px;
-  margin: 150px auto;
+  margin: auto;
 }
 </style>

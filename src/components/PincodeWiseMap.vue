@@ -4,8 +4,8 @@
     :mapStyle.sync="mapStyle"
     :center="coordinates"
     :zoom="zoom"
-    @load="onMapLoad"
-  >
+    @load="onMapLoad" >
+    <MglNavigationControl position="top-right" />
     <MglMarker :coordinates="coordinates" color="green" />
   </MglMap>
 </template>
@@ -65,13 +65,10 @@ export default {
   },
   methods: {
     updateCharts (e) {
-      console.log(this.income)
       let locality = this.expenditure.find(
         element => e.pincode === element.pincode
       )
-      this.$emit('updatePincodeLocality', locality)
-      console.log(this.expenditure, e)
-      console.log(e)
+      this.$emit('updatePincodeLocality', locality, e)
     },
 
     onMapLoad ({ map }) {
@@ -93,9 +90,6 @@ export default {
           <div>${e.features[0].properties.households}</div>
         </main>
       </section>
-    </div>
-    <div class="text-center">
-      <button class="btn-mr b-p">Detail</button>
     </div>`
           )
           .addTo(map)

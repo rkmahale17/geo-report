@@ -6,6 +6,7 @@
     :zoom="zoom"
     @load="onMapLoad"
   >
+    <MglNavigationControl position="top-right" />
 
     <MglMarker :coordinates="coordinates" color="green" />
   </MglMap>
@@ -110,9 +111,6 @@ export default {
           <div>${e.features[0].properties.households}</div>
         </main>
       </section>
-    </div>
-    <div class="text-center">
-      <button class="btn-mr b-p">Detail</button>
     </div>`
           )
           .addTo(map)
@@ -127,9 +125,6 @@ export default {
       map.on('mouseleave', 'states-layer', function () {
         map.getCanvas().style.cursor = ''
       })
-      const localityData = { type: 'geojson', data: this.localities.features }
-      console.log(localityData)
-
       map.addSource('localities', { type: 'geojson', data: this.localities })
       map.addLayer({
         id: 'locality-line',
