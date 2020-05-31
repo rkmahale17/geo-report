@@ -12,7 +12,6 @@ body {
 //maps
 .floating-btn{
   position: absolute;
-  bottom: 20px;
   right:20px;
 }
 .floating-btn__down{
@@ -91,6 +90,12 @@ button.mapboxgl-ctrl-compass > .mapboxgl-ctrl-icon {
 }
 .mt-10 {
   margin-top: 10px;
+}
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mt-20{
+  margin-top: 20px;
 }
 .material-icons {
   font-family: "Material Icons";

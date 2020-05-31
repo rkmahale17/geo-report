@@ -3,53 +3,41 @@
   <div class="home">
     <div class="maps map_box">
       <div v-if="isLocality">
-        <PincodeWiseMap
-          class="d-box-shadow"
-          @updatePincodeLocality="updatePincodeLocality"
-        ></PincodeWiseMap>
+        <PincodeWiseMap class="d-box-shadow" @updatePincodeLocality="updatePincodeLocality"></PincodeWiseMap>
       </div>
       <div v-else>
-        <LocalityWiseMap
-          class="div-box-shadow"
-          @updateLocality="updateLocality"
-        ></LocalityWiseMap>
+        <LocalityWiseMap class="div-box-shadow" @updateLocality="updateLocality"></LocalityWiseMap>
       </div>
     </div>
-    <div class="charts ">
-        <section class="area_info div-box-shadow br-10">
-           <div class="heading-3 tc-w f-wb letter-space-1 mainHeadings">
-          AREA INFO
-        </div>
-          <div class="d-flex xs-block justify-content-center mt-10">
-            <div class="pt-10 mt-10 info-block" v-if="(pincode || localityId)">
-              <div v-if="pincode" class="heading-4 tc-gl">
-                Showing Result for Pincode
-                <span class="tc-w heading-3">{{ pincode }} </span>
-              </div>
-              <div v-if="localityId" class="heading-4 tc-gl">
-                Showing Result for Locality FID
-                <span class="tc-w heading-3">{{ localityId }} </span>
-              </div>
+    <div class="charts">
+      <section class="area_info div-box-shadow br-10">
+        <div class="heading-3 tc-w f-wb letter-space-1 mainHeadings">AREA INFO</div>
+        <div class="d-flex xs-block justify-content-center mt-20">
+          <div class="pt-10 mt-10 info-block text-center" v-if="(pincode || localityId)">
+            <div v-if="pincode" class="heading-4 tc-gl">
+              Showing Result for Pincode
+              <span class="tc-w heading-3">{{ pincode }}</span>
             </div>
-            <div class="ml-5 info-block text-center">
-              <div>
-                <input
-                  type="checkbox"
-                  class="toggle-switch switch-on-off"
-                  v-model="isLocality"
-                />
-              </div>
-              <div>
-                <span class="heading-6 pl-5 tc-w">
-                  Click button to switch
-                  {{ isLocality ? "LOCALITY MAP" : "PINCODE MAP" }}</span
-                >
-              </div>
+            <div v-if="localityId" class="heading-4 tc-gl">
+              Showing Result for Locality FID
+              <span class="tc-w heading-3">{{ localityId }}</span>
             </div>
           </div>
+          <div class="ml-5 info-block text-center">
+            <div>
+              <input type="checkbox" class="toggle-switch switch-on-off" v-model="isLocality" />
+            </div>
+            <div>
+              <span class="heading-6 pl-5 tc-w">
+                Click button to switch
+                {{ isLocality ? "LOCALITY MAP" : "PINCODE MAP" }}
+              </span>
+            </div>
+          </div>
+        </div>
 
-          <div
-            v-if="
+        <div
+          v-if="
               !(
                 population ||
                 households ||
@@ -59,101 +47,67 @@
                 city
               )
             "
-          >
-            <img
-              src="../assets/empty.svg"
-              alt="empty_image"
-              class="empty_image"
-            />
-            <h3 class="tc-s text-center heading-6">
-              Select Map area to get area_info
-            </h3>
-          </div>
-          <div class="d-flex xs-block justify-content-center">
-            <div class="info-block " v-if="population">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ population }}
-              </div>
-              <div class="info-label heading-4 tc-gl info-label">
-                Population
-              </div>
-            </div>
-            <div class=" info-block" v-if="households">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ households }}
-              </div>
-              <div class="info-label heading-4 tc-gl info-label">
-                Households
-              </div>
-            </div>
-          </div>
-
-          <div
-            class="d-flex xs-block justify-content-center "
-            v-if="country && district"
-          >
-            <div class="info-block">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ country }}
-              </div>
-
-              <div class="info-label heading-4 tc-gl info-label">Country</div>
-            </div>
-            <div class="info-block">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ district }}
-              </div>
-
-              <div class="info-label heading-4 tc-gl info-label">District</div>
-            </div>
-          </div>
-          <div
-            class="d-flex xs-block justify-content-center"
-            v-if="locality && city"
-          >
-            <div class=" info-block">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ city }}
-              </div>
-
-              <div class="info-label heading-4 tc-gl info-label">City</div>
-            </div>
-            <div class="info-block">
-              <div class="info-val heading-3 tc-w f-wm info-val">
-                {{ locality }}
-              </div>
-
-              <div class="info-label heading-4 tc-gl info-label">Locality</div>
-            </div>
-          </div>
-        </section>
-      <section class="b2 bc-p demographic_box br-10 p-10 div-box-shadow">
-        <div class="heading-3 tc-p f-wb letter-space-1 mainHeadings">
-          DEMOGRAPHICS
+        >
+          <img src="../assets/empty.svg" alt="empty_image" class="empty_image" />
+          <h3 class="tc-s text-center heading-6">Select Map area to get area_info</h3>
         </div>
+        <div class="d-flex xs-block justify-content-center mt-20">
+          <div class="info-block text-center" v-if="population">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ population }}</div>
+            <div class="info-label heading-4 tc-gl info-label">Population</div>
+          </div>
+          <div class="info-block text-center" v-if="households">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ households }}</div>
+            <div class="info-label heading-4 tc-gl info-label">Households</div>
+          </div>
+        </div>
+
+        <div class="d-flex xs-block justify-content-center mt-20" v-if="country && district">
+          <div class="info-block text-center">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ country }}</div>
+
+            <div class="info-label heading-4 tc-gl info-label">Country</div>
+          </div>
+          <div class="info-block text-center">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ district }}</div>
+
+            <div class="info-label heading-4 tc-gl info-label">District</div>
+          </div>
+        </div>
+        <div class="d-flex xs-block justify-content-center mt-20 mb-10" v-if="locality && city">
+          <div class="info-block text-center">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ city }}</div>
+
+            <div class="info-label heading-4 tc-gl info-label">City</div>
+          </div>
+          <div class="info-block text-center">
+            <div class="info-val heading-3 tc-w f-wm info-val">{{ locality }}</div>
+
+            <div class="info-label heading-4 tc-gl info-label">Locality</div>
+          </div>
+        </div>
+      </section>
+      <section class="b2 bc-p demographic_box br-10 p-10 div-box-shadow mb-10">
+        <div class="heading-3 tc-p f-wb letter-space-1 mainHeadings">DEMOGRAPHICS</div>
 
         <div class="d-flex b-l justify-content-center dSmBlock">
           <div class="charts_box div-box-shadow br-10 bar_chart">
             <BarCharts :pincodeWiseLocality="pincodeWiseLocality" />
           </div>
           <div class="dummy_box"></div>
-          <div class="b-l charts_box div-box-shadow br-10 doughnutChart ">
+          <div class="b-l charts_box div-box-shadow br-10 doughnutChart">
             <DoughnutChart :localityData="localityData" />
           </div>
         </div>
       </section>
       <div class="floating-btn" @click="scrollToTop()">
         <button class="btn-r b-p div-box-shadow">
-          <span class="material-icons upward_icon">
-            arrow_upward
-          </span>
+          <span class="material-icons upward_icon">arrow_upward</span>
         </button>
       </div>
-            <div class="floating-btn__down" @click="scrollToChart()">
+      <div class="floating-btn__down" @click="scrollToChart()">
         <button class="btn-r b-s div-box-shadow">
-          <span class="material-icons upward_icon">
-            arrow_downward
-          </span>
+          <span class="material-icons upward_icon">arrow_downward</span>
         </button>
       </div>
     </div>
